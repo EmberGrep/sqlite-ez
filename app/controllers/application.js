@@ -1,6 +1,7 @@
 import Ember from 'ember';
 const sqlite = requireNode('sqlite3').verbose();
 const db = new sqlite.Database(':memory:');
+const dialog = requireNode('electron').remote.dialog;
 
 export default Ember.Controller.extend({
   parseResults(res) {
@@ -14,6 +15,14 @@ export default Ember.Controller.extend({
   },
 
   actions: {
+    openDb() {
+      dialog.showOpenDialog((files) => {
+        if (files === undefined) {
+          this.set('errMsg', 'You must select a database to open');
+        }
+      });
+    },
+
     submitQuery(query) {
       this.clearMessages();
 

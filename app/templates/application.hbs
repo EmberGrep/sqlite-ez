@@ -2,28 +2,6 @@
   <div class="row">
     <h1>SQLite EZ</h1>
   </div>
-</div>
-
-<div class="container">
-  <form {{action "submitQuery" query on="submit"}}>
-
-    <div class="row">
-        {{ivy-codemirror
-          mode="sql"
-          value=query
-          lineNumbers=true
-          fixedGutter=true
-          lineWrapping=true
-          tabSize=2
-          smartIndent=true
-          theme="solarized"
-      }}
-    </div>
-
-    <div class="row">
-      <button class="btn btn-primary">Submit</button>
-    </div>
-  </form>
 
   <div class="row">
     {{#if errMsg}}
@@ -39,3 +17,31 @@
     {{/if}}
   </div>
 </div>
+
+{{#if db}}
+  <div class="container">
+    <form {{action "submitQuery" query on="submit"}}>
+
+      <div class="row">
+          {{ivy-codemirror
+            mode="sql"
+            value=query
+            lineNumbers=true
+            fixedGutter=true
+            lineWrapping=true
+            tabSize=2
+            smartIndent=true
+            theme="solarized"
+        }}
+      </div>
+
+      <div class="row">
+        <button class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+{{else}}
+  <div class="container">
+    <div class="row"><button class="btn btn-primary" {{action 'openDb'}}>Open File</button></div>
+  </div>
+{{/if}}
