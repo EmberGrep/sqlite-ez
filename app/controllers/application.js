@@ -1,9 +1,10 @@
 import Ember from 'ember';
 const sqlite = requireNode('sqlite3').verbose();
-const db = new sqlite.Database(':memory:');
 const dialog = requireNode('electron').remote.dialog;
 
 export default Ember.Controller.extend({
+  db: null,
+
   parseResults(res) {
     this.set('successMsg', `Query returned successfully with ${res.length} results.`);
   },
@@ -18,13 +19,23 @@ export default Ember.Controller.extend({
     openDb() {
       dialog.showOpenDialog((files) => {
         if (files === undefined) {
-          this.set('errMsg', 'You must select a database to open');
+          return
         }
+
+        if (!files[0].match(/.sqlite$/)) {
+          return this.set('errMsg', 'You must select an SQLite database to open');
+        }
+
+        const db = new sqlite.Database(files[0]);
+
+        this.set('db', db);
       });
     },
 
     submitQuery(query) {
       this.clearMessages();
+
+      const db = this.get('db');
 
       db.serialize(() => {
         this.set('loading', false);
