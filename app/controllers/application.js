@@ -1,6 +1,7 @@
 import Ember from 'ember';
 const sqlite = requireNode('sqlite3').verbose();
 const dialog = requireNode('electron').remote.dialog;
+const fs = requireNode('fs');
 
 export default Ember.Controller.extend({
   db: null,
@@ -15,8 +16,15 @@ export default Ember.Controller.extend({
     this.set('loading', true);
   },
 
+  openDbPath(path) {
+    const db = new sqlite.Database(path);
+
+    this.set('dbPath', path);
+    this.set('db', db);
+  },
+
   actions: {
-    openDb() {
+    openFile() {
       dialog.showOpenDialog((files) => {
         if (files === undefined) {
           return
@@ -26,9 +34,21 @@ export default Ember.Controller.extend({
           return this.set('errMsg', 'You must select an SQLite database to open');
         }
 
-        const db = new sqlite.Database(files[0]);
+        this.openDbPath(files[0]);
+      });
+    },
 
-        this.set('db', db);
+    createFile() {
+      dialog.showSaveDialog({defaultPath: 'database.sqlite'}, (files) => {
+        if (files === undefined) {
+          return
+        }
+
+        if (!files.match(/.sqlite$/)) {
+          return this.set('errMsg', 'You must save a file with the extension ".sqlite"');
+        }
+
+        this.openDbPath(files);
       });
     },
 

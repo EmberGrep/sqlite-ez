@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
-    <h1>SQLite EZ</h1>
+    <h1>
+      SQLite EZ
+      <button class="btn btn-primary" {{action 'openFile'}}>Open Database</button>
+      <button class="btn btn-primary" {{action 'createFile'}}>Create Database</button>
+    </h1>
+
+    {{#if dbPath}}
+      <h2>Currently Open: <code>{{dbPath}}</code></h2>
+    {{/if}}
   </div>
 
   <div class="row">
@@ -39,9 +47,5 @@
         <button class="btn btn-primary">Submit</button>
       </div>
     </form>
-  </div>
-{{else}}
-  <div class="container">
-    <div class="row"><button class="btn btn-primary" {{action 'openDb'}}>Open File</button></div>
   </div>
 {{/if}}
