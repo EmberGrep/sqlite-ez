@@ -26,26 +26,49 @@
   </div>
 </div>
 
-{{#if db}}
-  <div class="container">
-    <form {{action "submitQuery" query on="submit"}}>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      {{#if db}}
+        <form {{action "submitQuery" query on="submit"}}>
+          <div class="row">
+            {{ivy-codemirror
+              mode="sql"
+              value=query
+              lineNumbers=true
+              fixedGutter=true
+              lineWrapping=true
+              tabSize=2
+              smartIndent=true
+              theme="solarized"}}
+          </div>
+          <div class="row">
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      {{/if}}
+    </div>
 
-      <div class="row">
-          {{ivy-codemirror
-            mode="sql"
-            value=query
-            lineNumbers=true
-            fixedGutter=true
-            lineWrapping=true
-            tabSize=2
-            smartIndent=true
-            theme="solarized"
-        }}
-      </div>
-
-      <div class="row">
-        <button class="btn btn-primary">Submit</button>
-      </div>
-    </form>
+    <div class="col-xs-6">
+      {{#if results}}
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              {{#each-in firstItem as |key value|}}
+                <th>{{key}}</th>
+              {{/each-in}}
+            </tr>
+          </thead>
+          <tbody>
+            {{#each results as |result|}}
+              <tr>
+                {{#each-in result as |key value|}}
+                  <td>{{value}}</td>
+                {{/each-in}}
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      {{/if}}</div>
   </div>
-{{/if}}
+</div>

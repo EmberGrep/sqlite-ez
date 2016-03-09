@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import _ from 'lodash';
 const sqlite = requireNode('sqlite3').verbose();
 const dialog = requireNode('electron').remote.dialog;
 const fs = requireNode('fs');
@@ -8,15 +9,25 @@ export default Ember.Controller.extend({
 
   parseResults(res) {
     this.set('successMsg', `Query returned successfully with ${res.length} results.`);
+
+    this.set('results', res);
+    this.set('firstItem',res[0]);
   },
 
   clearMessages() {
     this.set('successMsg', null);
     this.set('errMsg', null);
     this.set('loading', true);
+    this.set('results', null);
   },
 
   openDbPath(path) {
+    const existing = this.get('db');
+
+    if (existing && existing.close) {
+      existing.close();
+    }
+
     const db = new sqlite.Database(path);
 
     this.set('dbPath', path);
@@ -27,7 +38,7 @@ export default Ember.Controller.extend({
     openFile() {
       dialog.showOpenDialog((files) => {
         if (files === undefined) {
-          return
+          return;
         }
 
         if (!files[0].match(/.sqlite$/)) {
