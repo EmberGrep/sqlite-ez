@@ -1,8 +1,6 @@
 import Ember from 'ember';
-import _ from 'lodash';
 const sqlite = requireNode('sqlite3').verbose();
 const dialog = requireNode('electron').remote.dialog;
-const fs = requireNode('fs');
 
 export default Ember.Controller.extend({
   db: null,
@@ -71,7 +69,7 @@ export default Ember.Controller.extend({
     createFile() {
       dialog.showSaveDialog({defaultPath: 'database.sqlite'}, (files) => {
         if (files === undefined) {
-          return
+          return;
         }
 
         if (!files.match(/.sqlite$/)) {
