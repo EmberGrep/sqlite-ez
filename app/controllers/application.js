@@ -7,6 +7,24 @@ const fs = requireNode('fs');
 export default Ember.Controller.extend({
   db: null,
 
+  restoreFromLocalStorage() {
+    if (window.localStorage.query && window.localStorage.dbPath) {
+      if (window.localStorage.query !== 'undefined') {
+        this.set('query', window.localStorage.query);
+      }
+
+      this.openDbPath(window.localStorage.dbPath);
+    }
+  },
+
+  setLocalstorage() {
+    if (this.get('query')) {
+      window.localStorage.query = this.get('query');
+    }
+
+    window.localStorage.dbPath = this.get('dbPath');
+  },
+
   parseResults(res) {
     this.set('successMsg', `Query returned successfully with ${res.length} results.`);
 
@@ -32,6 +50,7 @@ export default Ember.Controller.extend({
 
     this.set('dbPath', path);
     this.set('db', db);
+    this.setLocalstorage();
   },
 
   actions: {
@@ -64,6 +83,7 @@ export default Ember.Controller.extend({
     },
 
     submitQuery(query) {
+      this.setLocalstorage();
       this.clearMessages();
 
       const db = this.get('db');
