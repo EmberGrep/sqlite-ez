@@ -54,12 +54,9 @@
       </form>
       {{/if}}
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-6 results-pane">
+    <div class="results">
       {{#if results}}
-        <table class="table table-bordered table-striped">
+        <table class="results__table">
           <thead>
             <tr>
               {{#each-in firstItem as |key value|}}
@@ -77,6 +74,7 @@
             {{/each}}
           </tbody>
         </table>
-      {{/if}}</div>
+      {{/if}}
+    </div>
   </div>
 </div>

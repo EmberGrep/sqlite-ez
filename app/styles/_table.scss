@@ -1,0 +1,32 @@
+thead {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+tbody {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  overflow-y: scroll;
+}
+
+tr {
+  display: flex;
+  &:nth-of-type(even) {
+    background: rgba($brand-primary, 0.1);
+  }
+}
+
+td, th {
+  padding: 0.2rem;
+
+  flex: 1;
+  flex-shrink: 0;
+  border: 0.1rem #606060 solid;
+}
+
+th:last-of-type {
+  margin-right: 0.5rem;
+}

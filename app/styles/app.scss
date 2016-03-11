@@ -5,10 +5,38 @@ $brand-blue: #0971b2;
 $brand-red: #b21212;
 $gutter: 2rem;
 $brand-border: rgba($brand-primary, 0.2) solid 0.1rem;
-
 @import 'base';
 @import 'grid';
 @import 'nav';
 @import 'buttons';
 @import 'file-status';
 @import 'editor';
+.results {
+  width: 50%;
+  overflow: hidden;
+  &__table {
+    display: flex;
+    flex-direction: column;
+
+    border-spacing: 0;
+    text-align: left;
+    @import 'table';
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+::-webkit-scrollbar-button {
+  background: #ccc;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eee;
+}
