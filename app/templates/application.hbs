@@ -1,15 +1,26 @@
 <div class="container">
-  <div class="row">
-    <h1>
-      SQLite EZ
-      <button class="btn btn-primary" {{action 'openFile'}}>Open Database</button>
-      <button class="btn btn-primary" {{action 'createFile'}}>Create Database</button>
-    </h1>
+  <nav class="top-nav">
+    <ul class="top-nav-list">
+      <li class="top-nav-list__item top-nav-list__item--brand">
+        <h1 class="nav-brand">
+          SQLite EZ
+        </h1>
+      </li>
+      <li class="top-nav-list__item">
+        <button class="file-btn" {{action 'createFile'}}>Create Database</button>
+      </li>
+      <li class="top-nav-list__item">
+        <button class="file-btn" {{action 'openFile'}}>Open Database</button>
+      </li>
+    </ul>
 
-    {{#if dbPath}}
-      <h2>Currently Open: <code>{{dbPath}}</code></h2>
-    {{/if}}
-  </div>
+  </nav>
+
+  {{#if dbPath}}
+    <h2 class="file-status">Currently Open: <code class="file-status__path">{{dbPath}}</code></h2>
+  {{else}}
+    <h2 class="file-status file-status--error">No database is currently open.</h2>
+  {{/if}}
 
   <div class="row">
     {{#if errMsg}}
@@ -24,9 +35,7 @@
       {{#bs-alert type="info"}}Loading Query Results...{{/bs-alert}}
     {{/if}}
   </div>
-</div>
 
-<div class="container">
   <div class="row">
     <div class="col-xs-6">
       {{#if db}}
@@ -49,7 +58,7 @@
       {{/if}}
     </div>
 
-    <div class="col-xs-6">
+    <div class="col-xs-6 results-pane">
       {{#if results}}
         <table class="table table-bordered table-striped">
           <thead>
