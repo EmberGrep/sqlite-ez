@@ -1,0 +1,27 @@
+.workspace {
+  display: flex;
+  flex: 1;
+}
+
+.editor {
+  display: flex;
+  margin: 0;
+  width: 50%;
+  border-right: $brand-border;
+}
+
+.query-workspace {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .CodeMirror {
+    flex: 1;
+  }
+
+  &__actions {
+    border-top: $brand-border;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

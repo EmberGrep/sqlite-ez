@@ -22,7 +22,7 @@
     <h2 class="file-status file-status--error">No database is currently open.</h2>
   {{/if}}
 
-  <div class="row">
+  {{!-- <div class="row">
     {{#if errMsg}}
       {{#bs-alert type="danger"}}{{errMsg}}{{/bs-alert}}
     {{/if}}
@@ -34,30 +34,29 @@
     {{#if loading}}
       {{#bs-alert type="info"}}Loading Query Results...{{/bs-alert}}
     {{/if}}
+  </div> --}}
+
+  <div class="workspace">
+    <div class="editor">
+      {{#if db}}
+      <form {{action "submitQuery" query on="submit"}} class="query-workspace">
+        {{ivy-codemirror
+          mode="sql"
+          value=query
+          lineNumbers=true
+          lineWrapping=true
+          tabSize=2
+          smartIndent=true
+          theme="lesser-dark"}}
+        <div class="query-workspace__actions">
+          <button class="query-btn">Submit</button>
+        </div>
+      </form>
+      {{/if}}
+    </div>
   </div>
 
   <div class="row">
-    <div class="col-xs-6">
-      {{#if db}}
-        <form {{action "submitQuery" query on="submit"}}>
-          <div class="row">
-            {{ivy-codemirror
-              mode="sql"
-              value=query
-              lineNumbers=true
-              fixedGutter=true
-              lineWrapping=true
-              tabSize=2
-              smartIndent=true
-              theme="solarized"}}
-          </div>
-          <div class="row">
-            <button class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-      {{/if}}
-    </div>
-
     <div class="col-xs-6 results-pane">
       {{#if results}}
         <table class="table table-bordered table-striped">

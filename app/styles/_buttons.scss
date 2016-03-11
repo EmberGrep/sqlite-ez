@@ -10,3 +10,16 @@
     background: $brand-blue;
   }
 }
+
+.query-btn {
+  display: block;
+  border: none;
+  padding: 0.5rem 1rem;
+
+  background: complement(#716B56);
+  color: $brand-white;
+
+  &:hover {
+    background: $brand-blue;
+  }
+}

@@ -6,7 +6,7 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     codemirror: {
       modes: ['sql'],
-      themes: ['solarized'],
+      themes: ['lesser-dark'],
     }
   });
 

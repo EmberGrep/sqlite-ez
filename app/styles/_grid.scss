@@ -1,0 +1,14 @@
+.row {
+  display: flex;
+  margin: 0 (-$gutter);
+
+  &__col-1-1 {
+    width: calc(100% - #{$gutter} - #{$gutter});
+    margin: 0 ($gutter);
+  }
+
+  &__col-1-2 {
+    width: calc(100% / 2 - #{$gutter} - #{$gutter});
+    margin: 0 ($gutter);
+  }
+}

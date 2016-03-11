@@ -16,9 +16,14 @@ button {
   line-height: inherit;
   font-size: inherit;
   cursor: pointer;
+  outline: none;
 }
 
 .container {
-  width: 100%;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
