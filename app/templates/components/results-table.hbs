@@ -1,0 +1,25 @@
+<div class="results__reference">
+  {{#if results}}
+    <table class="results__table">
+      <thead>
+        <tr>
+          {{#each-in (first results) as |key value|}}
+            <th>
+              {{key}}
+              <div class="results__table-header-sticky">{{key}}</div>
+            </th>
+          {{/each-in}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each results as |result|}}
+          <tr>
+            {{#each-in result as |key value|}}
+              <td>{{value}}</td>
+            {{/each-in}}
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/if}}
+</div>

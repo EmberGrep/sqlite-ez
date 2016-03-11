@@ -1,32 +1,47 @@
-thead {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
+.results {
+  width: 50%;
+  position: relative;
+  border: 1px solid #000;
+  padding-top: 37px;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
-
-tbody {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-
-  overflow-y: scroll;
+.results__reference {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
-
-tr {
-  display: flex;
-  &:nth-of-type(even) {
-    background: rgba($brand-primary, 0.1);
-  }
+table {
+  border-spacing: 0;
+  width:100%;
 }
-
+td + td {
+  border-left:1px solid #eee;
+}
 td, th {
-  padding: 0.2rem;
-
-  flex: 1;
-  flex-shrink: 0;
-  border: 0.1rem #606060 solid;
+  border-bottom:1px solid #eee;
+  background: #ddd;
+  color: #000;
+  padding: 10px 25px;
 }
-
-th:last-of-type {
-  margin-right: 0.5rem;
+th {
+  height: 0;
+  line-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: transparent;
+  border: none;
+  white-space: nowrap;
+}
+th div{
+  position: absolute;
+  background: transparent;
+  color: #fff;
+  padding: 9px 25px;
+  top: 0;
+  margin-left: -25px;
+  line-height: normal;
+  border-left: 1px solid #800;
+}
+th:first-child div{
+  border: none;
 }

@@ -54,27 +54,7 @@
       </form>
       {{/if}}
     </div>
-    <div class="results">
-      {{#if results}}
-        <table class="results__table">
-          <thead>
-            <tr>
-              {{#each-in firstItem as |key value|}}
-                <th>{{key}}</th>
-              {{/each-in}}
-            </tr>
-          </thead>
-          <tbody>
-            {{#each results as |result|}}
-              <tr>
-                {{#each-in result as |key value|}}
-                  <td>{{value}}</td>
-                {{/each-in}}
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
-      {{/if}}
-    </div>
+
+    {{results-table results=results}}
   </div>
 </div>

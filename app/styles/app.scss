@@ -11,18 +11,7 @@ $brand-border: rgba($brand-primary, 0.2) solid 0.1rem;
 @import 'buttons';
 @import 'file-status';
 @import 'editor';
-.results {
-  width: 50%;
-  overflow: hidden;
-  &__table {
-    display: flex;
-    flex-direction: column;
-
-    border-spacing: 0;
-    text-align: left;
-    @import 'table';
-  }
-}
+@import 'table';
 
 ::-webkit-scrollbar {
   width: 0.5rem;
