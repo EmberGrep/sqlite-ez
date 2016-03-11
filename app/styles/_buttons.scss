@@ -4,9 +4,9 @@
   padding: 0.5rem 1rem;
 
   background: complement(#716B56);
-  color: #e3e3e3;
+  color: $brand-white;
 
   &:hover {
-    background: #0971b2;
+    background: $brand-blue;
   }
 }

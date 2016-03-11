@@ -1,6 +1,25 @@
 $brand-secondary: #475055;
 $brand-primary: #e0bf99;
+$brand-white: #e3e3e3;
+$brand-blue: #0971b2;
+$brand-red: #b21212;
 
 @import 'base';
 @import 'nav';
 @import 'buttons';
+
+.file-status {
+  margin: 0;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background: rgba($brand-primary, 0.1);
+  border-bottom: rgba($brand-primary, 0.2) solid 0.1rem;
+
+  &__path {
+    color: desaturate(lighten($brand-red, 30%), 20%);
+  }
+
+  &--error {
+    color: desaturate(lighten($brand-red, 10%), 20%);
+  }
+}
