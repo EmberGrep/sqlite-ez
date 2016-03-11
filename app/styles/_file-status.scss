@@ -1,0 +1,15 @@
+.file-status {
+  margin: 0;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background: rgba($brand-primary, 0.1);
+  border-bottom: rgba($brand-primary, 0.2) solid 0.1rem;
+
+  &__path {
+    color: desaturate(lighten($brand-red, 30%), 20%);
+  }
+
+  &--error {
+    color: desaturate(lighten($brand-red, 10%), 20%);
+  }
+}
