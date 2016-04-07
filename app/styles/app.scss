@@ -12,6 +12,7 @@ $brand-border: rgba($brand-primary, 0.2) solid 0.1rem;
 @import 'file-status';
 @import 'editor';
 @import 'table';
+@import 'alerts';
 
 ::-webkit-scrollbar {
   width: 0.5rem;

@@ -1,0 +1,27 @@
+.alerts {
+  display: flex;
+  flex-direction: column;
+}
+
+.alert {
+  display: flex;
+  padding: 0.5rem;
+  margin: 0;
+
+  font-size: 1rem;
+
+  &--success {
+    background: #b6d279;
+    color: #4a7821;
+  }
+
+  &--danger {
+    background: #df7a75;
+    color: #852c1e;
+  }
+
+  &--info {
+    background: #568cff;
+    color: #061fa5;
+  }
+}

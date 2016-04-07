@@ -22,19 +22,19 @@
     <h2 class="file-status file-status--error">No database is currently open.</h2>
   {{/if}}
 
-  {{!-- <div class="row">
+  <div class="alerts">
     {{#if errMsg}}
-      {{#bs-alert type="danger"}}{{errMsg}}{{/bs-alert}}
+      {{#eg-alert type="danger"}}{{errMsg}}{{/eg-alert}}
     {{/if}}
 
     {{#if successMsg}}
-      {{#bs-alert type="success"}}{{successMsg}}{{/bs-alert}}
+      {{#eg-alert type="success"}}{{successMsg}}{{/eg-alert}}
     {{/if}}
 
     {{#if loading}}
-      {{#bs-alert type="info"}}Loading Query Results...{{/bs-alert}}
+      {{#eg-alert type="info"}}Loading Query Results...{{/eg-alert}}
     {{/if}}
-  </div> --}}
+  </div>
 
   <div class="workspace">
     <div class="editor">
